@@ -55,7 +55,7 @@ const fetchData = async () => {
     const result: APIResponseModel<PagenationResponseModel<AccountModel[]>> = await stores.dispatch(
       'account/getAccountList',
       {
-        pagenationInfor: queries,
+        pagenationInfor: queries, 
         roleName: roleName.toUpperCase()
       }
     )

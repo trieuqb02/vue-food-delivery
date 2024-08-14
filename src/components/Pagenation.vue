@@ -1,26 +1,26 @@
 <script setup lang="ts">
 interface PagenationInfor {
-  currentPageNumber: number
-  offset: number
-  totalPageNumber: number
+  currentPageNumber?: number
+  offset?: number
+  totalPageNumber?: number
 }
 const props = defineProps<PagenationInfor>()
 
 function getPaginationGenerator(): (number | string)[] {
   const offsetNumber =
-    props.currentPageNumber <= props.offset ||
-    props.currentPageNumber > props.totalPageNumber - props.offset
+    props.currentPageNumber! <= props.offset! ||
+    props.currentPageNumber! > props.totalPageNumber! - props.offset!
       ? props.offset
-      : props.offset - 1
+      : props.offset! - 1
   const numbersList = []
   const numbersListWithDots: (number | string)[] = []
 
-  if (props.totalPageNumber <= 1 || props.totalPageNumber === undefined) return [1]
+  if (props.totalPageNumber! <= 1 || props.totalPageNumber === undefined) return [1]
 
   numbersList.push(1)
   for (
-    let i = props.currentPageNumber - offsetNumber;
-    i <= props.currentPageNumber + offsetNumber;
+    let i = props.currentPageNumber! - offsetNumber!;
+    i <= props.currentPageNumber! + offsetNumber!;
     i++
   ) {
     if (i < props.totalPageNumber && i > 1) {
@@ -59,7 +59,7 @@ function getPaginationGenerator(): (number | string)[] {
         class="pagination_item"
         :class="[{ unactive: props.currentPageNumber == 1 }]"
         :disabled="props.currentPageNumber == 1"
-        @click="$emit('selectedPage', props.currentPageNumber - 1)"
+        @click="$emit('selectedPage', props.currentPageNumber! - 1)"
       >
         <font-awesome-icon :icon="['fas', 'angle-left']" />
       </button>
@@ -76,7 +76,7 @@ function getPaginationGenerator(): (number | string)[] {
         class="pagination_item"
         :class="[{ unactive: props.currentPageNumber == props.totalPageNumber }]"
         :disabled="props.currentPageNumber == props.totalPageNumber"
-        @click="$emit('selectedPage', props.currentPageNumber + 1)"
+        @click="$emit('selectedPage', props.currentPageNumber! + 1)"
       >
         <font-awesome-icon :icon="['fas', 'angle-right']" />
       </button>

@@ -1,4 +1,5 @@
 import { UserModel } from './AccountInforModel'
+import type AssignmentModel from './AssignmentModel'
 import type ProductModel from './ProductModel'
 
 class OrderDetailModel {
@@ -17,5 +18,6 @@ export default class OrderModel {
   address2!: string
   createdAt!: Date
   assignmented?: Boolean
-  orderDetails!: OrderDetailModel[]
+  orderDetails!: OrderDetailModel[];
+  assignment?:AssignmentModel;
 }

@@ -35,4 +35,18 @@ const editlOrder = (orderId: string, status: number): Promise<APIResponseModel<O
   })
 }
 
-export { getOrderList, editlOrder }
+const getStatistics = (pagenationInfor: QueryModel): Promise<APIResponseModel<OrderModel[]>> => {
+  return new Promise(async (resovle, reject) => {
+    try {
+      let result = await APIClient.get<APIResponseModel<OrderModel[]>>(
+        `management/order/statistics`,
+        { params: pagenationInfor }
+      )
+      resovle(result.data)
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+export { getOrderList, editlOrder, getStatistics }

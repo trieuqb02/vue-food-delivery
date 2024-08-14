@@ -14,7 +14,8 @@ let viewMav: NavModel[] = [
   { title: 'Quản lí tài khoản', path: '/admin/account' },
   { title: 'Quản lí danh mục', path: '/admin/category' },
   { title: 'Quản lí sản phẩm', path: '/admin/product' },
-  { title: 'Quản lí đơn hàng', path: '/admin/order' }
+  { title: 'Quản lí đơn hàng', path: '/admin/order' },
+  { title: 'Thống kê đơn hàng', path: '/admin/statistics/order' }
 ]
 
 socket.on('registerNotificationToAdmin', (data: string) => {

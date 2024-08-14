@@ -106,7 +106,7 @@ const selectedAcction = async (action: boolean) => {
 }
 
 const created = async (newPrice: PriceModel) => {
-  newPrice.productId = productId
+  newPrice.product = productId
   try {
     let result: APIResponseModel<PriceModel> = await stores.dispatch(
       'product/createPrice',

@@ -17,6 +17,8 @@ const CategoryListView = () => import('../views/admin/CategoryListView.vue')
 const ProductListView = () => import('../views/admin/ProductListView.vue')
 const PriceListView = () => import('../views/admin/PriceListView.vue')
 const OrderListView = () => import('../views/admin/OrderListView.vue')
+const StatisticsView = () => import('../views/admin/StatisticsView.vue')
+const OrderStatisticsView = () => import('../views/admin/OrderStatistics.vue')
 
 const routes = [
   { path: '/', component: LoginView },
@@ -63,6 +65,12 @@ const routes = [
         component: OrdertView,
         redirect: '/admin/order/waite',
         children: [{ path: ':orderStatus', component: OrderListView }]
+      },
+      {
+        path: 'statistics',
+        component: StatisticsView,
+        redirect: '/admin/statistics/order',
+        children: [{ path: 'order', component: OrderStatisticsView }]
       }
     ]
   },

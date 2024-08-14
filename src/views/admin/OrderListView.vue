@@ -64,7 +64,10 @@ let account = reactive<AccountModel>({
   username: '',
   password: '',
   conformPassword: '',
-  user: new UserModel()
+  user: {
+    phoneNumber: '',
+    fullName: ''
+  }
 })
 
 let status = ref<number>(OrderStatusHelper.WAITE)
@@ -131,15 +134,16 @@ const showModal = async (value: OrderModel, action: string) => {
     try {
       const result: APIResponseModel<AccountModel> = await stores.dispatch(
         'account/getAccount',
-        (order.customer as UserModel)._id!
+        (order.assignment!.employee as UserModel)._id!
       )
+
       if (result.code == CodeHelper.SUCCESS && result.data) {
         account = result.data
+        modal.open('Thông tin nhân viên', false, undefined, 'showEmploye')
       }
     } catch (error) {
       console.log(error)
     }
-    modal.open('Thông tin nhân viên', false, undefined, 'data')
   }
 }
 
